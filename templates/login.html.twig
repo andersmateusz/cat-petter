@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="pt-3"><a href="{{ path('app_home') }}" class="link-dark">{% include 'partials/_logo.html.twig' %}</a></h1>
+        <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+            <div class="col-8 border-2 border rounded-4 p-3">
+                {% if error %}
+                    <div style="color: red;" class="pb-2">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <form action="{{ path('app_login') }}" method="post">
+                    <div class="mb-3">
+                        <label for="username" class="form-label"><strong>Email address</strong></label>
+                        <input type="email" id="username" name="_username" value="{{ last_username }}" class="form-control" aria-describedby="emailHelp" placeholder="Input your email address..." />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label"><strong>Password</strong></label>
+                        <input type="password" class="form-control" id="password" name="_password" placeholder="Input your password..." />
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-right-to-bracket"></i> Sign in</button>
+                    </div>
+                    <div class="mb-3">
+                        Do not have account? Sign up <a href="{{ path('app_signup') }}">here</a>
+                    </div>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% include 'kittie/_create_cat_modal.html.twig' %}
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11" id="notifications">
+    </div>
+    <div class="container">
+        <div {{ turbo_stream_listen('App\\Entity\\Kittie') }}></div>
+        <div {{ turbo_stream_listen('https://example.com/notifications') }}></div>
+        <div class="row d-flex justify-content-center" id="kitties">
+            {% for cat in cats|sort((a,b) => a < b) %}
+                {% include 'kittie/kittie_el.html.twig' with {kittie: cat} %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="pt-3"><a href="{{ path('app_home') }}" class="link-dark">{% include 'partials/_logo.html.twig' %}</a></h1>
+        <div class="row justify-content-center align-items-center" style="min-height: 70vh;">
+            <div class="col-8 border-2 border rounded-4 p-3">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.password) }}
+                <button type="submit" class="btn btn-success"><i class="fas fa-user-plus"></i> Sign up</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

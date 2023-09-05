@@ -1,0 +1,12 @@
+<div class="col-md-3 p-0 m-1 d-flex justify-content-center align-items-center" style="background-color: rgb(128,128,128, 0.1);">
+    {% set alt = "Cat with name \"#{kittie.name}\". Photo uploaded by \"#{kittie.createdBy}\"." %}
+    {% set label %}
+        <span>
+            Cat with name <strong>{{ kittie.name }}</strong>.<br> Photo uploaded by <strong>{{ kittie.createdBy }}</strong>.
+        </span>
+    {% endset %}
+    <figure>
+        <img src="{{ path('app_kittie_picture', {id: kittie.id}) }}" title="{{ alt }}" class="img-fluid"  alt="{{ alt }}"/>
+        <figcaption><small><em>{{ label }}</em></small></figcaption>
+    </figure>
+</div>

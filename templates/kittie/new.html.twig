@@ -1,0 +1,11 @@
+{% if asStream %}
+    <turbo-stream action="update" target="createKittieModalBody">
+        <template>
+            {% include 'kittie/_form.html.twig' with {action: path('app_kittie_new')} %}
+        </template>
+    </turbo-stream>
+{% else %}
+    <turbo-frame id="createKittieModalBody">
+        {% include 'kittie/_form.html.twig' with {action: path('app_kittie_new')} %}
+    </turbo-frame>
+{% endif %}

@@ -1,0 +1,7 @@
+{% block create %}
+<turbo-stream action="prepend" target="kitties">
+    <template>
+        {% include 'kittie/kittie_el.html.twig' with {kittie: entity} %}
+    </template>
+</turbo-stream>
+{% endblock %}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}CatPics{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </head>
+    <body>
+        {% block nav %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+                <div class="container-fluid justify-content-start">
+                    <a class="navbar-brand" href="{{ path('app_home') }}">{% include 'partials/_logo.html.twig' %}</a>
+                    <span class="navbar-text">
+                <em>Share cat pictures with others live!</em>
+            </span>
+                </div>
+                <div class="container-fluid justify-content-end">
+                    <div style="padding-right: 5px;">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createCatModal">
+                            <i class="fas fa-share"></i> Share cat
+                        </button>
+                    </div>
+                    <form action="{{ path('app_logout') }}" method="post">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fas fa-sign-out-alt"></i> Log out
+                        </button>
+                    </form>
+                </div>
+            </nav>
+
+        {% endblock %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+    </body>
+</html>
